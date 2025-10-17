@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Courses Listing | Nanoschool</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Loading State -->
+    <div id="loadingState" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+        <div class="bg-white p-6 rounded-lg shadow-xl">
+            <div class="flex items-center space-x-4">
+                <div class="animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent"></div>
+                <span class="text-gray-700">Loading courses...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex-1 min-w-0">
+                    <h1 class="text-3xl font-bold text-gray-900">
+                        AI Courses
+                    </h1>
+                </div>
+                <div class="mt-4 flex md:mt-0 md:ml-4 space-x-4">
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <div class="flex items-center space-x-2">
+                            <div class="text-sm">
+                                <span class="font-medium"><span id="totalCourses">0</span> Total Courses</span>
+                            </div>
+                            <span class="text-gray-300">|</span>
+                            <div class="text-sm">
+                                <span class="font-medium"><span id="activeCourses">0</span> Active</span>
+                            </div>
+                            <span class="text-gray-300">|</span>
+                            <div class="text-sm">
+                                <span class="font-medium"><span id="advancedCourses">0</span> Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Filters -->
+        <div class="bg-white p-4 rounded-lg shadow mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div>
+                    <label for="searchInput" class="block text-sm font-medium text-gray-700">Search</label>
+                    <input type="text" id="searchInput" placeholder="Search courses..."
+                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="trackFilter" class="block text-sm font-medium text-gray-700">Track</label>
+                    <select id="trackFilter" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <option value="">All Tracks</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="levelFilter" class="block text-sm font-medium text-gray-700">Level</label>
+                    <select id="levelFilter" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <option value="">All Levels</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                        <option value="Expert">Expert</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="domainFilter" class="block text-sm font-medium text-gray-700">Domain</label>
+                    <select id="domainFilter" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <option value="">All Domains</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Info -->
+        <div class="flex justify-between items-center mb-4">
+            <div class="text-sm text-gray-600">
+                Showing <span id="resultsCount">0</span> courses
+            </div>
+            <div class="flex space-x-2">
+                <button class="px-3 py-1 rounded bg-gray-100 text-gray-600 hover:bg-gray-200">
+                    <i class="fas fa-th-large"></i>
+                </button>
+                <button class="px-3 py-1 rounded bg-white text-gray-600 hover:bg-gray-100">
+                    <i class="fas fa-list"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Course Grid -->
+        <div id="coursesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6"></div>
+
+        <!-- No Results -->
+        <div id="noResults" class="hidden text-center py-12">
+            <div class="text-gray-400">
+                <i class="fas fa-search text-5xl mb-4"></i>
+                <p class="text-xl">No courses found matching your criteria</p>
+                <p class="text-sm mt-2">Try adjusting your filters or search terms</p>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center space-x-2 mt-6" id="pagination"></div>
+    </main>
+
+    <!-- Course Data (can be populated by server) -->
+    <script id="courseData" type="application/json">[]</script>
+    
+    <!-- Main Script -->
+    <script src="../js/listing-enhanced.js"></script>
+</body>
+</html>

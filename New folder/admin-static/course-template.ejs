@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title><%= course.meta && course.meta.title ? course.meta.title : course.title %></title>
+  <meta name="description" content="<%= course.meta && course.meta.description ? course.meta.description : course.description %>" />
+  <meta name="keywords" content="<%= course.meta && course.meta.keywords ? course.meta.keywords : '' %>">
+  <link rel="canonical" href="<%= course.meta && course.meta.canonical ? course.meta.canonical : course.mainPageUrl %>">
+  <!-- Open Graph -->
+  <meta property="og:title" content="<%= course.meta && course.meta.og && course.meta.og.title ? course.meta.og.title : course.title %>">
+  <meta property="og:description" content="<%= course.meta && course.meta.og && course.meta.og.description ? course.meta.og.description : course.shortDescription || course.description %>">
+  <meta property="og:image" content="<%= course.meta && course.meta.og && course.meta.og.image ? course.meta.og.image : course.image %>">
+  <meta property="og:url" content="<%= course.meta && course.meta.og && course.meta.og.url ? course.meta.og.url : course.mainPageUrl %>">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Use site stylesheet (provided by user). Keep classes unchanged to match /1.css -->
+  <link rel="stylesheet" href="/1.css">
+  <script type="application/ld+json">
+    <% const ld = course.structuredData || course.schema || {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": course.title,
+      "description": course.description,
+      "url": course.mainPageUrl,
+      "courseCode": course.courseCode || course.id
+    };
+    // Add instructors if present
+    if (course.instructors) {
+      ld.instructor = Array.isArray(course.instructors) ? course.instructors.map(i => ({"@type":"Person","name": i.name || i })) : {"@type":"Person","name": course.instructors};
+    }
+    // Add offers from plans
+    if (Array.isArray(course.plans) && course.plans.length) {
+      ld.offers = course.plans.map(p => ({"@type":"Offer","name":p.name,"url":p.ctaUrl,"price":p.price,"priceCurrency":p.currency || 'USD'}));
+    }
+    // Aggregate rating
+    if (course.aggregateRating) {
+      ld.aggregateRating = course.aggregateRating;
+    }
+    %>
+    <%= JSON.stringify(ld) %>
+  </script>
+</head>
+<body class="bg-gray-100">
+  <header class="relative bg-gradient-to-r from-purple-600 via-blue-500 to-indigo-600 text-white">
+    <div class="max-w-6xl mx-auto p-8">
+      <div class="flex flex-col lg:flex-row gap-6 items-center">
+        <div class="flex-1">
+          <h1 class="text-3xl lg:text-4xl font-extrabold"><%= course.title %></h1>
+          <p class="mt-2 text-sm opacity-90"><%= course.shortDescription || course.description %></p>
+          <div class="mt-4 flex gap-3">
+            <% (course.plans || []).forEach(p => { %>
+              <a href="<%= p.ctaUrl %>" class="px-4 py-2 rounded <%= p.highlight ? 'bg-green-600 text-white' : 'bg-white text-gray-800' %>"><%= p.name %> - <%= p.currency === 'INR' ? '₹'+p.price : '$'+p.price %></a>
+            <% }) %>
+          </div>
+        </div>
+        <div class="w-full lg:w-1/3">
+          <% if (course.videoUrl) { %>
+            <div class="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden"><iframe class="w-full h-full" src="<%= course.videoUrl %>" title="Course preview" frameborder="0" allowfullscreen></iframe></div>
+          <% } else if (course.image) { %>
+            <img src="<%= course.image %>" alt="<%= course.title %>" class="rounded-lg w-full" />
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <section class="lg:col-span-2">
+        <article class="bg-white p-6 rounded shadow">
+          <h2 class="text-xl font-bold">What you'll learn</h2>
+          <p class="mt-2 text-gray-700"><%= course.description %></p>
+
+          <h3 class="mt-6 text-lg font-semibold">Syllabus</h3>
+          <% if (Array.isArray(course.syllabus)) { %>
+            <% course.syllabus.forEach(s => { %>
+              <div class="border p-3 rounded my-3">
+                <strong>Week <%= s.week %> — <%= s.title %></strong>
+                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700">
+                  <% (s.topics || []).forEach(t => { %>
+                    <li><%= t %></li>
+                  <% }) %>
+                </ul>
+              </div>
+            <% }) %>
+          <% } %>
+
+          <% if (Array.isArray(course.projects) && course.projects.length) { %>
+            <h3 class="mt-6 text-lg font-semibold">Hands-on Projects</h3>
+            <% course.projects.forEach(p => { %>
+              <div class="p-3 border rounded my-2">
+                <strong><%= p.title %></strong>
+                <p class="text-sm text-gray-700"><%= p.description %></p>
+              </div>
+            <% }) %>
+          <% } %>
+
+          <% if (Array.isArray(course.testimonials) && course.testimonials.length) { %>
+            <h3 class="mt-6 text-lg font-semibold">Testimonials</h3>
+            <% course.testimonials.forEach(t => { %>
+              <div class="p-3 border rounded my-2">
+                <div class="font-semibold"><%= t.name %> — <span class="text-sm text-gray-600">Rating: <%= t.rating %></span></div>
+                <div class="text-sm text-gray-700 mt-1"><%= t.text %></div>
+              </div>
+            <% }) %>
+          <% } %>
+
+          <% if (Array.isArray(course.faqs) && course.faqs.length) { %>
+            <h3 class="mt-6 text-lg font-semibold">FAQs</h3>
+            <% course.faqs.forEach(f => { %>
+              <div class="my-2">
+                <details class="bg-gray-50 p-3 rounded"><summary class="font-medium"><%= f.question %></summary><div class="mt-2 text-sm text-gray-700"><%= f.answer %></div></details>
+              </div>
+            <% }) %>
+          <% } %>
+        </article>
+      </section>
+
+      <aside class="p-4 bg-white rounded shadow">
+        <div class="mb-4">
+          <div class="text-sm text-gray-600">Duration</div>
+          <div class="font-bold"><%= course.duration && course.duration.weeks ? course.duration.weeks + ' weeks' : course.duration || '' %></div>
+        </div>
+        <div class="mb-4">
+          <div class="text-sm text-gray-600">Level</div>
+          <div class="font-bold"><%= course.level %></div>
+        </div>
+        <div class="mb-4">
+          <div class="text-sm text-gray-600">Students</div>
+          <div class="font-bold"><%= course.students %></div>
+        </div>
+
+        <h4 class="font-semibold mt-3 mb-2">Pricing</h4>
+        <% if (course.pricing) { %>
+          <div class="text-sm">
+            <div>LMS: $<%= course.pricing.lms.usd %> / ₹<%= course.pricing.lms.inr %></div>
+            <div>LMS + Video: $<%= course.pricing.lms_video.usd %> / ₹<%= course.pricing.lms_video.inr %></div>
+            <div>LMS + Video + Live: $<%= course.pricing.lms_video_live.usd %> / ₹<%= course.pricing.lms_video_live.inr %></div>
+          </div>
+        <% } %>
+
+        <div class="mt-4">
+          <% (course.plans || []).forEach(p => { %>
+            <a href="<%= p.ctaUrl %>" class="block text-center px-3 py-2 rounded mb-2 <%= p.highlight ? 'bg-green-600 text-white' : 'bg-blue-600 text-white' %>"><%= p.name %> — <%= p.currency === 'INR' ? '₹'+p.price : '$'+p.price %></a>
+          <% }) %>
+        </div>
+
+        <div class="mt-6">
+          <button id="openCalc" class="w-full bg-gray-100 p-2 rounded">Open Pricing Calculator</button>
+          <div id="calc" class="mt-3 hidden border p-3 rounded bg-gray-50">
+            <label class="block text-sm">Mode</label>
+            <select id="calcMode" class="border p-2 rounded w-full">
+              <option value="lms">LMS Only</option>
+              <option value="lms_video">LMS + Video</option>
+              <option value="lms_video_live">LMS + Video + Live</option>
+            </select>
+            <label class="block text-sm mt-2">Weeks</label>
+            <input id="calcWeeks" type="number" min="1" value="<%= course.duration && course.duration.weeks ? course.duration.weeks : 1 %>" class="border p-2 rounded w-full" />
+            <div class="mt-3">
+              <div>USD: <span id="calcUsd">-</span></div>
+              <div>INR: <span id="calcInr">-</span></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="/1.js"></script>
+  <script>
+    // Expose pricing from server-rendered course object for client-side calculator
+    window.__coursePricing = <%= JSON.stringify(course.pricing || { lms:{usd:19,inr:1499}, lms_video:{usd:60,inr:6000}, lms_video_live:{usd:534,inr:44994} }) %>;
+    function calcPrice(mode, weeks) {
+      const p = window.__coursePricing || {};
+      const lms = p.lms || { usd: 0, inr: 0 };
+      const lms_video = p.lms_video || { usd: 0, inr: 0 };
+      const lms_video_live = p.lms_video_live || { usd: 0, inr: 0 };
+      weeks = Math.max(1, parseInt(weeks || 1, 10));
+      let usd = 0, inr = 0;
+      if (mode === 'lms') { usd = weeks * lms.usd; inr = weeks * lms.inr; }
+      else if (mode === 'lms_video') { usd = weeks * lms.usd + lms_video.usd; inr = weeks * lms.inr + lms_video.inr; }
+      else if (mode === 'lms_video_live') {
+        // Keep previous progressive live lecture pricing pattern but use lms_video_live as base
+        if (weeks === 1) { usd = lms.usd + lms_video.usd + lms_video_live.usd; inr = lms.inr + lms_video.inr + lms_video_live.inr; }
+        else if (weeks === 2) { usd = 2*lms.usd + lms_video.usd + 2*lms_video_live.usd; inr = 2*lms.inr + lms_video.inr + 2*lms_video_live.inr; }
+        else { usd = weeks*lms.usd + lms_video.usd + 2*lms_video_live.usd + (weeks-2)*lms_video_live.usd; inr = weeks*lms.inr + lms_video.inr + 2*lms_video_live.inr + (weeks-2)*lms_video_live.inr; }
+      }
+      return { usd, inr };
+    }
+    document.getElementById('openCalc').addEventListener('click', () => { document.getElementById('calc').classList.toggle('hidden'); updateCalc(); });
+    function updateCalc(){ const mode=document.getElementById('calcMode').value; const weeks=document.getElementById('calcWeeks').value; const res=calcPrice(mode, weeks); document.getElementById('calcUsd').textContent = '$'+res.usd; document.getElementById('calcInr').textContent = '₹'+res.inr; }
+    document.getElementById('calcMode').addEventListener('change', updateCalc); document.getElementById('calcWeeks').addEventListener('input', updateCalc);
+    updateCalc();
+  </script>
+</body>
+</html>

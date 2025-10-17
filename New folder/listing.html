@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Courses Hub Listing</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Discover curated AI and Quantum Computing courses by track or domain on AI Courses Hub. Learn programming, machine learning, data science, robotics and more.">
+  <meta name="keywords" content="AI courses, machine learning, data science, deep learning, programming languages, quantum computing, computer vision, robotics, artificial intelligence, AI development, AI engineering, online education, AI fundamentals">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AI Courses Hub">
+  <!-- Geotargeting Meta Tags -->
+  <meta name="geo.region" content="IN-HR">
+  <meta name="geo.placename" content="Gurugram">
+  <meta name="geo.position" content="28.4595;77.0266">
+  <meta name="ICBM" content="28.4595,77.0266">
+  <meta name="geo.country" content="IN">
+  <!-- Open Graph Meta Tags for better SERP and social sharing -->
+  <meta property="og:title" content="AI Courses Hub Listing">
+  <meta property="og:description" content="Explore curated AI & Quantum Computing courses by track or domain on AI Courses Hub. Learn programming, machine learning, data science and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nanoschool.in/ai-courses-hub/listing">
+  <meta property="og:image" content="https://nanoschool.in/images/logo.png">
+  <meta property="og:site_name" content="AI Courses Hub">
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Courses Hub Listing">
+  <meta name="twitter:description" content="Discover curated AI & Quantum Computing courses on AI Courses Hub by track or domain.">
+  <meta name="twitter:image" content="https://nanoschool.in/images/logo.png">
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://nanoschool.in/ai-courses-hub/listing">
+  <!-- Tailwind CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Simple slide-in animation for course cards */
+    .course-card {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .course-card.slide-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Spinner style */
+    .loader {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Hero section with dynamic heading -->
+  <header class="relative mb-8">
+    <div class="relative bg-gradient-to-r from-purple-600 via-blue-500 to-indigo-600 text-white rounded-lg overflow-hidden">
+      <div class="container mx-auto px-4 py-16">
+        <h1 id="listingHeading" class="text-4xl md:text-5xl font-extrabold mb-4">AI Courses Listing</h1>
+        <p class="text-lg md:text-xl mb-6 max-w-2xl">Browse curated courses filtered by track or domain. Unlock the future with AI &amp; Quantum learning.</p>
+        <a href="#coursesContainer" class="inline-block bg-white text-blue-700 font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-100 transition">Browse Courses</a>
+      </div>
+      <!-- Decorative circles -->
+      <div class="absolute top-0 right-0 w-56 h-56 bg-purple-700 opacity-30 rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 left-0 w-56 h-56 bg-blue-700 opacity-30 rounded-full transform -translate-x-1/2 translate-y-1/2"></div>
+    </div>
+  </header>
+
+  <div class="container mx-auto p-4">
+    <!-- Statistics -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white/80 backdrop-blur-lg shadow rounded-lg p-4 flex items-center gap-3">
+        <div class="text-3xl text-blue-500"><i class="fas fa-graduation-cap"></i></div>
+        <div>
+          <p class="text-sm text-gray-600">Total Courses</p>
+          <p id="totalCourses" class="text-2xl font-bold">0</p>
+        </div>
+      </div>
+      <div class="bg-white/80 backdrop-blur-lg shadow rounded-lg p-4 flex items-center gap-3">
+        <div class="text-3xl text-green-500"><i class="fas fa-check-circle"></i></div>
+        <div>
+          <p class="text-sm text-gray-600">Active</p>
+          <p id="activeCourses" class="text-2xl font-bold">0</p>
+        </div>
+      </div>
+      <div class="bg-white/80 backdrop-blur-lg shadow rounded-lg p-4 flex items-center gap-3">
+        <div class="text-3xl text-orange-500"><i class="fas fa-brain"></i></div>
+        <div>
+          <p class="text-sm text-gray-600">Advanced &amp; Expert</p>
+          <p id="advancedCourses" class="text-2xl font-bold">0</p>
+        </div>
+      </div>
+      <div class="bg-white/80 backdrop-blur-lg shadow rounded-lg p-4 flex items-center gap-3">
+        <div class="text-3xl text-yellow-500"><i class="fas fa-hourglass-half"></i></div>
+        <div>
+          <p class="text-sm text-gray-600">Upcoming</p>
+          <p id="upcomingCourses" class="text-2xl font-bold">0</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter and control panel -->
+    <div class="bg-white shadow rounded-lg p-6 mb-6">
+      <h2 class="text-xl font-bold mb-6 text-gray-800 flex items-center justify-between">
+        <span>Course Filters</span>
+        <button id="clearAllFilters" class="text-sm text-blue-600 hover:text-blue-800 transition">
+          <i class="fas fa-undo-alt mr-1"></i>Reset All
+        </button>
+      </h2>
+      
+      <!-- Search and Quick Filters -->
+      <div class="space-y-6">
+        <!-- Search Bar with Type Selection -->
+        <div class="flex gap-2">
+          <div class="flex-grow relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-search text-gray-400"></i>
+            </div>
+            <input id="titleFilter" type="text" 
+                   placeholder="Search courses by title, description, or tools..." 
+                   class="pl-10 w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+          </div>
+          <button id="advancedSearchBtn" class="px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition">
+            <i class="fas fa-sliders-h"></i>
+          </button>
+        </div>
+
+        <!-- Active Filters Display -->
+        <div id="activeFilters" class="flex flex-wrap gap-2"></div>
+
+        <!-- Primary Filters -->
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Track Selection -->
+          <div class="space-y-3">
+            <h3 class="font-semibold text-gray-800 flex items-center gap-2">
+              <i class="fas fa-route text-blue-600"></i>Tracks
+            </h3>
+            <div class="space-y-2">
+              <!-- Industry Tracks -->
+              <div class="bg-purple-50 rounded-lg p-3">
+                <h4 class="text-sm font-medium text-purple-800 mb-2">
+                  <i class="fas fa-industry mr-1"></i>Industry Tracks
+                </h4>
+                <div id="industryTrackFilters" class="space-y-1"></div>
+              </div>
+              <!-- Regular Tracks -->
+              <div class="bg-blue-50 rounded-lg p-3">
+                <h4 class="text-sm font-medium text-blue-800 mb-2">
+                  <i class="fas fa-graduation-cap mr-1"></i>Regular Tracks
+                </h4>
+                <div id="regularTrackFilters" class="space-y-1"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Domain Selection -->
+          <div class="space-y-3">
+            <h3 class="font-semibold text-gray-800 flex items-center gap-2">
+              <i class="fas fa-sitemap text-green-600"></i>Domains
+            </h3>
+            <div id="domainFilters" class="bg-green-50 rounded-lg p-3 max-h-[300px] overflow-y-auto"></div>
+          </div>
+        </div>
+
+        <!-- Secondary Filters -->
+        <div class="grid md:grid-cols-3 gap-4 bg-gray-50 rounded-lg p-4">
+          <!-- Level Filter -->
+          <div>
+            <h3 class="text-sm font-medium text-gray-700 mb-2">
+              <i class="fas fa-layer-group text-orange-600 mr-1"></i>Level
+            </h3>
+            <div id="levelFilters" class="space-y-1">
+              <label class="flex items-center text-sm cursor-pointer">
+                <input type="checkbox" class="level-filter mr-2" value="Beginner">
+                <span class="flex-grow">Beginner</span>
+                <span id="beginnerCount" class="text-xs text-gray-500"></span>
+              </label>
+              <label class="flex items-center text-sm cursor-pointer">
+                <input type="checkbox" class="level-filter mr-2" value="Intermediate">
+                <span class="flex-grow">Intermediate</span>
+                <span id="intermediateCount" class="text-xs text-gray-500"></span>
+              </label>
+              <label class="flex items-center text-sm cursor-pointer">
+                <input type="checkbox" class="level-filter mr-2" value="Advanced">
+                <span class="flex-grow">Advanced</span>
+                <span id="advancedCount" class="text-xs text-gray-500"></span>
+              </label>
+              <label class="flex items-center text-sm cursor-pointer">
+                <input type="checkbox" class="level-filter mr-2" value="Expert">
+                <span class="flex-grow">Expert</span>
+                <span id="expertCount" class="text-xs text-gray-500"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Duration Filter -->
+          <div>
+            <h3 class="text-sm font-medium text-gray-700 mb-2">
+              <i class="fas fa-clock text-blue-600 mr-1"></i>Duration
+            </h3>
+            <div class="space-y-1">
+              <label class="flex items-center text-sm cursor-pointer">
+                <input type="checkbox" class="duration-filter mr-2" value="0-2">
+                <span class="flex-grow">0-2 weeks</span>
+                <span id="duration02Count" class="text-xs text-gray-500"></span>
+              </label>
+              <label class="flex items-center text-sm cursor-pointer">
+                <input type="checkbox" class="duration-filter mr-2" value="2-5">
+                <span class="flex-grow">2-5 weeks</span>
+                <span id="duration25Count" class="text-xs text-gray-500"></span>
+              </label>
+              <label class="flex items-center text-sm cursor-pointer">
+                <input type="checkbox" class="duration-filter mr-2" value="5-10">
+                <span class="flex-grow">5-10 weeks</span>
+                <span id="duration510Count" class="text-xs text-gray-500"></span>
+              </label>
+              <label class="flex items-center text-sm cursor-pointer">
+                <input type="checkbox" class="duration-filter mr-2" value="10+">
+                <span class="flex-grow">10+ weeks</span>
+                <span id="duration10PlusCount" class="text-xs text-gray-500"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Tools Filter -->
+          <div>
+            <h3 class="text-sm font-medium text-gray-700 mb-2">
+              <i class="fas fa-tools text-gray-600 mr-1"></i>Popular Tools
+            </h3>
+            <div id="toolFilters" class="space-y-1 max-h-[150px] overflow-y-auto">
+              <!-- Will be populated dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced Search Modal -->
+      <div id="advancedSearchModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+        <div class="fixed inset-0 flex items-center justify-center p-4">
+          <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold">Advanced Search</h3>
+                <button onclick="closeAdvancedSearch()" class="text-gray-500 hover:text-gray-700">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <div class="space-y-4">
+                <!-- Advanced search options will be added here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Duration filters -->
+      <div class="flex flex-wrap items-center gap-4 mt-3">
+        <span class="text-gray-700 text-sm">Duration:</span>
+        <label class="text-sm"><input type="checkbox" class="duration-filter mr-1" value="0-2">0-2 weeks</label>
+        <label class="text-sm"><input type="checkbox" class="duration-filter mr-1" value="2-5">2-5 weeks</label>
+        <label class="text-sm"><input type="checkbox" class="duration-filter mr-1" value="5-10">5-10 weeks</label>
+        <label class="text-sm"><input type="checkbox" class="duration-filter mr-1" value="10+">10+ weeks</label>
+      </div>
+      <div class="flex flex-wrap gap-2 items-center mt-4">
+        <button id="applyFilters" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Apply Filters</button>
+        <button id="clearFilters" class="border border-blue-600 text-blue-600 px-4 py-2 rounded hover:bg-blue-50 transition">Clear Filters</button>
+        <div class="ml-auto flex gap-2 items-center">
+          <label class="text-sm text-gray-600">Sort by:</label>
+          <select id="sortBy" class="border p-2 rounded">
+            <option value="title">Title</option>
+            <option value="level">Level</option>
+            <option value="duration">Duration</option>
+            <option value="status">Status</option>
+          </select>
+        </div>
+        <div class="flex gap-2">
+          <button id="gridView" class="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition">Grid</button>
+          <button id="listView" class="px-4 py-2 rounded border border-blue-600 text-blue-600 hover:bg-blue-50 transition">List</button>
+        </div>
+      </div>
+    </div>
+    <!-- Track/Domain Navigation -->
+    <div class="mb-8 bg-white rounded-lg shadow-lg p-6">
+      <div class="flex flex-col md:flex-row gap-6">
+        <!-- Industry Tracks -->
+        <div class="flex-1">
+          <h3 class="text-lg font-bold text-purple-700 mb-3 flex items-center">
+            <i class="fas fa-industry mr-2"></i>Industry Tracks
+          </h3>
+          <div class="grid grid-cols-1 gap-2" id="industryTrackLinks">
+            <!-- Will be populated by JavaScript -->
+          </div>
+        </div>
+        <!-- Regular Tracks -->
+        <div class="flex-1">
+          <h3 class="text-lg font-bold text-blue-700 mb-3 flex items-center">
+            <i class="fas fa-graduation-cap mr-2"></i>Regular Tracks
+          </h3>
+          <div class="grid grid-cols-1 gap-2" id="regularTrackLinks">
+            <!-- Will be populated by JavaScript -->
+          </div>
+        </div>
+        <!-- Domains -->
+        <div class="flex-1">
+          <h3 class="text-lg font-bold text-green-700 mb-3 flex items-center">
+            <i class="fas fa-sitemap mr-2"></i>Domains
+          </h3>
+          <div class="grid grid-cols-1 gap-2" id="domainLinks">
+            <!-- Will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Header -->
+    <div class="flex items-center justify-between mb-4 bg-white rounded-lg shadow p-4">
+      <div>
+        <h2 id="resultsTitle" class="text-xl font-bold text-gray-800">All Courses</h2>
+        <p id="resultsCount" class="text-sm text-gray-600"></p>
+      </div>
+      <div class="flex items-center gap-2">
+        <select id="sortBy" class="border p-2 rounded text-sm">
+          <option value="title">Sort by Title</option>
+          <option value="level">Sort by Level</option>
+          <option value="duration">Sort by Duration</option>
+          <option value="rating">Sort by Rating</option>
+          <option value="students">Sort by Students</option>
+        </select>
+        <div class="flex gap-1">
+          <button id="gridView" class="p-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition">
+            <i class="fas fa-th-large"></i>
+          </button>
+          <button id="listView" class="p-2 rounded border border-blue-600 text-blue-600 hover:bg-blue-50 transition">
+            <i class="fas fa-list"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Results Message -->
+    <div id="noResults" class="hidden">
+      <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-yellow-800">
+        <div class="flex items-center">
+          <i class="fas fa-exclamation-circle text-xl mr-2"></i>
+          <p>No courses found matching your criteria. Try adjusting your filters.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Current Track/Domain Info -->
+    <div id="currentGroupInfo" class="mb-6 hidden">
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+            <i id="currentGroupIcon" class="fas fa-graduation-cap text-2xl text-white"></i>
+          </div>
+          <div class="flex-grow">
+            <h2 id="currentGroupTitle" class="text-2xl font-bold text-gray-800 mb-2"></h2>
+            <p id="currentGroupDescription" class="text-gray-600"></p>
+          </div>
+          <div class="flex-shrink-0">
+            <button onclick="clearGroupFilter()" class="text-blue-600 hover:text-blue-800 transition">
+              <i class="fas fa-times-circle"></i> Clear Filter
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Courses container with group headers -->
+    <div id="groupedCoursesContainer" class="space-y-8">
+      <!-- Groups will be inserted here -->
+    </div>
+    <div id="coursesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    
+    <!-- Pagination -->
+    <div id="paginationContainer" class="mt-8 flex justify-center"></div>
+  </div>
+
+  <!-- Floating Stats -->
+  <div class="fixed bottom-4 right-4 bg-white rounded-lg shadow-lg p-4 flex gap-4 border border-gray-200">
+    <div class="text-center">
+      <div class="text-sm text-gray-600">Showing</div>
+      <div id="visibleCourses" class="font-bold text-blue-600">0</div>
+    </div>
+    <div class="text-center">
+      <div class="text-sm text-gray-600">Total</div>
+      <div id="totalFilteredCourses" class="font-bold text-purple-600">0</div>
+    </div>
+  </div>
+
+  <!-- Course details modal -->
+  <div id="courseModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white p-6 rounded-lg max-w-lg w-full" onclick="event.stopPropagation()">
+      <div class="flex justify-between items-center mb-4">
+        <h2 id="modalTitle" class="text-xl font-bold"></h2>
+        <button onclick="closeModal()" class="text-gray-600 text-2xl leading-none">&times;</button>
+      </div>
+      <div id="modalContent" class="space-y-4 text-sm"></div>
+      <div id="modalPricing" class="mt-6">
+        <h3 class="text-lg font-bold mb-2 text-blue-700 flex items-center"><i class="fas fa-money-bill-wave mr-2"></i>Course Pricing</h3>
+        <div id="pricingTable" class="mb-4"></div>
+        <div class="bg-gray-50 rounded-lg p-4">
+          <h4 class="font-semibold mb-2">Pricing Calculator</h4>
+          <label class="block mb-2 text-sm">Select Mode:</label>
+          <select id="pricingMode" class="border p-2 rounded w-full mb-2">
+            <option value="lms">LMS Only</option>
+            <option value="lms_video">LMS + Video</option>
+            <option value="lms_video_live">LMS + Video + Live</option>
+          </select>
+          <label class="block mb-2 text-sm">Weeks:</label>
+          <input id="pricingWeeks" type="number" min="1" max="52" class="border p-2 rounded w-full mb-2" />
+          <div class="flex gap-4 mt-2">
+            <div>
+              <span class="text-xs text-gray-500">USD</span>
+              <div id="calcUsd" class="font-bold text-lg text-blue-700">$0</div>
+            </div>
+            <div>
+              <span class="text-xs text-gray-500">INR</span>
+              <div id="calcInr" class="font-bold text-lg text-green-700">₹0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading spinner -->
+  <div id="loadingSpinner" class="fixed inset-0 flex items-center justify-center hidden">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Preloaded course data (fallback) -->
+  <script src="all_courses.js"></script>
+  <!-- Listing logic -->
+  <script src="listing.js"></script>
+  <!-- Enhanced listing features -->
+  <script src="listing-enhanced.js"></script>
+  <!-- Enhanced filtering system -->
+  <script src="enhanced-filters.js"></script>
+</body>
+</html>

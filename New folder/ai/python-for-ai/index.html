@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Python for AI</title>
+  <meta name="description" content="Join India’s leading Deep Science Learning Organisation—NanoSchool’s NSTC-accredited course. Master Python, NumPy, and Pandas in 6 weeks. Build real AI pipelines. No prior coding needed." />
+  <meta name="keywords" content="">
+  <link rel="canonical" href="https://nanoschool.in/ai/courses/python-for-ai/">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Python for AI">
+  <meta property="og:description" content="Join India’s leading Deep Science Learning Organisation—NanoSchool’s NSTC-accredited course. Master Python, NumPy, and Pandas in 6 weeks. Build real AI pipelines. No prior coding needed.">
+  <meta property="og:image" content="">
+  <meta property="og:url" content="https://nanoschool.in/ai/courses/python-for-ai/">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Use site stylesheet (provided by user). Keep classes unchanged to match /1.css -->
+  <link rel="stylesheet" href="/1.css">
+  <script type="application/ld+json">
+    
+    {&#34;@context&#34;:&#34;https://schema.org&#34;,&#34;@type&#34;:&#34;Course&#34;,&#34;name&#34;:&#34;Python for AI&#34;,&#34;description&#34;:&#34;Join India’s leading Deep Science Learning Organisation—NanoSchool’s NSTC-accredited course. Master Python, NumPy, and Pandas in 6 weeks. Build real AI pipelines. No prior coding needed.&#34;,&#34;url&#34;:&#34;https://nanoschool.in/ai/courses/python-for-ai/&#34;,&#34;courseCode&#34;:&#34;AI-1&#34;}
+  </script>
+</head>
+<body class="bg-gray-100">
+  <header class="relative bg-gradient-to-r from-purple-600 via-blue-500 to-indigo-600 text-white">
+    <div class="max-w-6xl mx-auto p-8">
+      <div class="flex flex-col lg:flex-row gap-6 items-center">
+        <div class="flex-1">
+          <h1 class="text-3xl lg:text-4xl font-extrabold">Python for AI</h1>
+          <p class="mt-2 text-sm opacity-90">Join India’s leading Deep Science Learning Organisation—NanoSchool’s NSTC-accredited course. Master Python, NumPy, and Pandas in 6 weeks. Build real AI pipelines. No prior coding needed.</p>
+          <div class="mt-4 flex gap-3">
+            
+          </div>
+        </div>
+        <div class="w-full lg:w-1/3">
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <section class="lg:col-span-2">
+        <article class="bg-white p-6 rounded shadow">
+          <h2 class="text-xl font-bold">What you'll learn</h2>
+          <p class="mt-2 text-gray-700">Join India’s leading Deep Science Learning Organisation—NanoSchool’s NSTC-accredited course. Master Python, NumPy, and Pandas in 6 weeks. Build real AI pipelines. No prior coding needed.</p>
+
+          <h3 class="mt-6 text-lg font-semibold">Syllabus</h3>
+          
+
+          
+
+          
+
+          
+        </article>
+      </section>
+
+      <aside class="p-4 bg-white rounded shadow">
+        <div class="mb-4">
+          <div class="text-sm text-gray-600">Duration</div>
+          <div class="font-bold">6 Weeks</div>
+        </div>
+        <div class="mb-4">
+          <div class="text-sm text-gray-600">Level</div>
+          <div class="font-bold">Beginner</div>
+        </div>
+        <div class="mb-4">
+          <div class="text-sm text-gray-600">Students</div>
+          <div class="font-bold">11085</div>
+        </div>
+
+        <h4 class="font-semibold mt-3 mb-2">Pricing</h4>
+        
+          <div class="text-sm">
+            <div>LMS: $114 / ₹8994</div>
+            <div>LMS + Video: $174 / ₹14994</div>
+            <div>LMS + Video + Live: $534 / ₹44994</div>
+          </div>
+        
+
+        <div class="mt-4">
+          
+        </div>
+
+        <div class="mt-6">
+          <button id="openCalc" class="w-full bg-gray-100 p-2 rounded">Open Pricing Calculator</button>
+          <div id="calc" class="mt-3 hidden border p-3 rounded bg-gray-50">
+            <label class="block text-sm">Mode</label>
+            <select id="calcMode" class="border p-2 rounded w-full">
+              <option value="lms">LMS Only</option>
+              <option value="lms_video">LMS + Video</option>
+              <option value="lms_video_live">LMS + Video + Live</option>
+            </select>
+            <label class="block text-sm mt-2">Weeks</label>
+            <input id="calcWeeks" type="number" min="1" value="1" class="border p-2 rounded w-full" />
+            <div class="mt-3">
+              <div>USD: <span id="calcUsd">-</span></div>
+              <div>INR: <span id="calcInr">-</span></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="/1.js"></script>
+  <script>
+    // Expose pricing from server-rendered course object for client-side calculator
+    window.__coursePricing = {&#34;weeks&#34;:6,&#34;lms&#34;:{&#34;usd&#34;:114,&#34;inr&#34;:8994},&#34;lms_video&#34;:{&#34;usd&#34;:174,&#34;inr&#34;:14994},&#34;lms_video_live&#34;:{&#34;usd&#34;:534,&#34;inr&#34;:44994}};
+    function calcPrice(mode, weeks) {
+      const p = window.__coursePricing || {};
+      const lms = p.lms || { usd: 0, inr: 0 };
+      const lms_video = p.lms_video || { usd: 0, inr: 0 };
+      const lms_video_live = p.lms_video_live || { usd: 0, inr: 0 };
+      weeks = Math.max(1, parseInt(weeks || 1, 10));
+      let usd = 0, inr = 0;
+      if (mode === 'lms') { usd = weeks * lms.usd; inr = weeks * lms.inr; }
+      else if (mode === 'lms_video') { usd = weeks * lms.usd + lms_video.usd; inr = weeks * lms.inr + lms_video.inr; }
+      else if (mode === 'lms_video_live') {
+        // Keep previous progressive live lecture pricing pattern but use lms_video_live as base
+        if (weeks === 1) { usd = lms.usd + lms_video.usd + lms_video_live.usd; inr = lms.inr + lms_video.inr + lms_video_live.inr; }
+        else if (weeks === 2) { usd = 2*lms.usd + lms_video.usd + 2*lms_video_live.usd; inr = 2*lms.inr + lms_video.inr + 2*lms_video_live.inr; }
+        else { usd = weeks*lms.usd + lms_video.usd + 2*lms_video_live.usd + (weeks-2)*lms_video_live.usd; inr = weeks*lms.inr + lms_video.inr + 2*lms_video_live.inr + (weeks-2)*lms_video_live.inr; }
+      }
+      return { usd, inr };
+    }
+    document.getElementById('openCalc').addEventListener('click', () => { document.getElementById('calc').classList.toggle('hidden'); updateCalc(); });
+    function updateCalc(){ const mode=document.getElementById('calcMode').value; const weeks=document.getElementById('calcWeeks').value; const res=calcPrice(mode, weeks); document.getElementById('calcUsd').textContent = '$'+res.usd; document.getElementById('calcInr').textContent = '₹'+res.inr; }
+    document.getElementById('calcMode').addEventListener('change', updateCalc); document.getElementById('calcWeeks').addEventListener('input', updateCalc);
+    updateCalc();
+  </script>
+</body>
+</html>

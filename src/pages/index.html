@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Courses Hub</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Explore a catalog of 1700+ Artificial Intelligence and Quantum Computing courses on AI Courses Hub. Learn programming, machine learning, data science, computer vision, robotics, quantum computing, and more from expert instructors.">
+  <meta name="keywords" content="AI courses, machine learning, data science, deep learning, programming languages, quantum computing, computer vision, robotics, artificial intelligence, AI development, AI engineering, online education, AI fundamentals">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AI Courses Hub">
+  <!-- Geotargeting Meta Tags -->
+  <meta name="geo.region" content="IN-HR">
+  <meta name="geo.placename" content="Gurugram">
+  <meta name="geo.position" content="28.4595;77.0266">
+  <meta name="ICBM" content="28.4595,77.0266">
+  <meta name="geo.country" content="IN">
+  <!-- Open Graph Meta Tags for better SERP and social sharing -->
+  <meta property="og:title" content="AI Courses Hub | Learn AI, ML, Data Science & Quantum Computing">
+  <meta property="og:description" content="Explore a catalog of 1700+ Artificial Intelligence and Quantum Computing courses on AI Courses Hub. Learn programming, machine learning, data science, computer vision, robotics, quantum computing, and more from expert instructors.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nanoschool.in/ai-courses-hub">
+  <meta property="og:image" content="https://nanoschool.in/images/logo.png">
+  <meta property="og:site_name" content="AI Courses Hub">
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Courses Hub | Learn AI, ML, Data Science & Quantum Computing">
+  <meta name="twitter:description" content="Explore a catalog of 1700+ Artificial Intelligence and Quantum Computing courses on AI Courses Hub. Learn programming, machine learning, data science, computer vision, robotics, quantum computing, and more from expert instructors.">
+  <meta name="twitter:image" content="https://nanoschool.in/images/logo.png">
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://nanoschool.in/ai-courses-hub">
+  <!-- Tailwind CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Simple slide-in animation for course cards */
+    .course-card {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .course-card.slide-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Spinner style */
+    .loader {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Hero section -->
+  <header class="relative mb-8">
+    <div class="relative bg-gradient-to-r from-purple-600 via-blue-500 to-indigo-600 text-white rounded-lg overflow-hidden">
+      <div class="container mx-auto px-4 py-16">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">AI Courses Hub</h1>
+        <p class="text-lg md:text-xl mb-6 max-w-2xl">Unlock the future with AI &amp; Quantum learning. Explore courses in programming, machine learning, data science, robotics and more.</p>
+        <a href="#coursesContainer" class="inline-block bg-white text-blue-700 font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-100 transition">Browse Courses</a>
+      </div>
+      <!-- Decorative circles -->
+      <div class="absolute top-0 right-0 w-56 h-56 bg-purple-700 opacity-30 rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 left-0 w-56 h-56 bg-blue-700 opacity-30 rounded-full transform -translate-x-1/2 translate-y-1/2"></div>
+    </div>
+  </header>
+
+  <div class="container mx-auto p-4">
+
+    <!-- Statistics -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white/80 backdrop-blur-lg shadow rounded-lg p-4 flex items-center gap-3">
+        <div class="text-3xl text-blue-500"><i class="fas fa-graduation-cap"></i></div>
+        <div>
+          <p class="text-sm text-gray-600">Total Courses</p>
+          <p id="totalCourses" class="text-2xl font-bold">0</p>
+        </div>
+      </div>
+      <div class="bg-white/80 backdrop-blur-lg shadow rounded-lg p-4 flex items-center gap-3">
+        <div class="text-3xl text-green-500"><i class="fas fa-check-circle"></i></div>
+        <div>
+          <p class="text-sm text-gray-600">Active</p>
+          <p id="activeCourses" class="text-2xl font-bold">0</p>
+        </div>
+      </div>
+      <div class="bg-white/80 backdrop-blur-lg shadow rounded-lg p-4 flex items-center gap-3">
+        <div class="text-3xl text-orange-500"><i class="fas fa-brain"></i></div>
+        <div>
+          <p class="text-sm text-gray-600">Advanced &amp; Expert</p>
+          <p id="advancedCourses" class="text-2xl font-bold">0</p>
+        </div>
+      </div>
+      <div class="bg-white/80 backdrop-blur-lg shadow rounded-lg p-4 flex items-center gap-3">
+        <div class="text-3xl text-yellow-500"><i class="fas fa-hourglass-half"></i></div>
+        <div>
+          <p class="text-sm text-gray-600">Upcoming</p>
+          <p id="upcomingCourses" class="text-2xl font-bold">0</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter and control panel -->
+    <div class="bg-white shadow rounded-lg p-6 mb-6">
+      <h2 class="text-lg font-semibold mb-4 text-gray-800">Filters</h2>
+      <div class="flex flex-wrap gap-2 md:gap-4">
+        <input id="titleFilter" type="text" placeholder="Search by title" class="border p-2 rounded flex-grow">
+        <select id="levelFilter" class="border p-2 rounded">
+          <option value="">All Levels</option>
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
+          <option value="Expert">Expert</option>
+        </select>
+        <select id="toolFilter" class="border p-2 rounded">
+          <option value="">All Tools</option>
+        </select>
+        <select id="domainFilter" class="border p-2 rounded">
+          <option value="">All Domains</option>
+        </select>
+        <select id="trackFilter" class="border p-2 rounded">
+          <option value="">All Tracks</option>
+        </select>
+        <!-- Status filter will be populated dynamically based on available values in the dataset -->
+        <select id="statusFilter" class="border p-2 rounded">
+          <option value="">All Statuses</option>
+        </select>
+      </div>
+      <!-- Duration filters -->
+      <div class="flex flex-wrap items-center gap-4 mt-3">
+        <span class="text-gray-700 text-sm">Duration:</span>
+        <label class="text-sm"><input type="checkbox" class="duration-filter mr-1" value="0-2">0-2 weeks</label>
+        <label class="text-sm"><input type="checkbox" class="duration-filter mr-1" value="2-5">2-5 weeks</label>
+        <label class="text-sm"><input type="checkbox" class="duration-filter mr-1" value="5-10">5-10 weeks</label>
+        <label class="text-sm"><input type="checkbox" class="duration-filter mr-1" value="10+">10+ weeks</label>
+      </div>
+      <div class="flex flex-wrap gap-2 items-center mt-4">
+        <button id="applyFilters" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Apply Filters</button>
+        <button id="clearFilters" class="border border-blue-600 text-blue-600 px-4 py-2 rounded hover:bg-blue-50 transition">Clear Filters</button>
+        <div class="ml-auto flex gap-2 items-center">
+          <label class="text-sm text-gray-600">Sort by:</label>
+          <select id="sortBy" class="border p-2 rounded">
+            <option value="title">Title</option>
+            <option value="level">Level</option>
+            <option value="duration">Duration</option>
+            <option value="status">Status</option>
+          </select>
+        </div>
+        <div class="flex gap-2">
+          <button id="gridView" class="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition">Grid</button>
+          <button id="listView" class="px-4 py-2 rounded border border-blue-600 text-blue-600 hover:bg-blue-50 transition">List</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results info -->
+    <p id="resultsCount" class="mb-2 text-gray-700"></p>
+    <p id="noResults" class="hidden mb-4 text-red-600">No courses found.</p>
+
+    <!-- Courses container -->
+    <div id="coursesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <!-- Pagination -->
+    <div id="paginationContainer" class="mt-4"></div>
+  </div>
+
+  <!-- Course details modal -->
+  <div id="courseModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white p-6 rounded-lg max-w-lg w-full" onclick="event.stopPropagation()">
+      <div class="flex justify-between items-center mb-4">
+        <h2 id="modalTitle" class="text-xl font-bold"></h2>
+        <button onclick="closeModal()" class="text-gray-600 text-2xl leading-none">&times;</button>
+      </div>
+      <div id="modalContent" class="space-y-4 text-sm"></div>
+    </div>
+  </div>
+
+  <!-- Loading spinner -->
+  <div id="loadingSpinner" class="fixed inset-0 flex items-center justify-center hidden">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Preloaded course data (fallback) -->
+  <script src="all_courses.js"></script>
+  <!-- Application logic -->
+  <script src="app.js"></script>
+</body>
+</html>

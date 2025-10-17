@@ -1,0 +1,167 @@
+[
+  {
+    "id": "AI-1",
+    "title": "Python for AI",
+    "alternateTitle": "F208: Python for AI Foundations",
+    "description": "6-week beginner course on Python, NumPy, Pandas, and full-stack AI development. Accredited by NanoSchool Technology Council (NSTC). Ideal for Indian students in Delhi NCR.",
+    "shortDescription": "Master Python, NumPy, and Pandas in 6 weeks. Build real AI pipelines. No prior coding needed.",
+    "courseCode": "F208",
+    "duration": {
+      "weeks": 6,
+      "hours": 40,
+      "iso": "P6W"
+    },
+    "level": "Beginner",
+    "track": "AI DEVELOPMENT (Full-Stack-to-Production)",
+    "domain": "PROGRAMMING LANGUAGES & TOOLS",
+    "status": "Active",
+    "instructors": [
+      { "name": "Dr. A. Sharma", "bio": "AI Educator, 10+ years experience" }
+    ],
+    "rating": 3.6,
+    "students": 13542,
+    "skills": ["Python Programming", "NumPy for AI", "Pandas Data Analysis", "AI Production Pipelines"],
+    "tools": ["Python", "NumPy", "Pandas"],
+    "prerequisites": ["None"],
+    "audience": ["Beginner", "Student", "Career Switcher", "Delhi NCR Learner"],
+    "language": "en",
+    "isAccessibleForFree": false,
+    "mainPageUrl": "https://nanoschool.in/ai/courses/python-for-ai/",
+    "enrollmentUrl": "https://nanoschool.in/ai-course/registration/?pid=AI-1",
+    "videoUrl": "https://www.youtube.com/embed/jUW3EjnqxVM",
+    "image": "https://nanoschool.in/images/python-for-ai-banner.webp",
+    "logo": "https://nanoschool.in/wp-content/uploads/2023/09/NSTC-Logo-2-removebg-preview-1.png",
+    "location": {
+      "region": "Delhi NCR",
+      "country": "IN",
+      "city": "New Delhi",
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "certificate": {
+      "name": "NSTC-Accredited Certificate in Python for AI",
+      "image": "https://nanoschool.in/wp-content/uploads/2024/05/certificate-in-web-2.webp",
+      "description": "Verified by the NanoSchool Technology Council (NSTC). Shareable on LinkedIn. Recognized by Indian employers and startups in Delhi NCR."
+    },
+    "projects": [
+      { "title": "AI Data Predictor", "description": "Use NumPy to forecast trends from real datasets.", "type": "core" },
+      { "title": "Pandas Data Analysis App", "description": "Analyze Indian startup or health data with Pandas.", "type": "core" },
+      { "title": "Full AI Pipeline", "description": "End-to-end project reviewed by NSTC mentors.", "type": "capstone" }
+    ],
+    "syllabus": [
+      { "week": 1, "title": "Python Fundamentals", "topics": ["Variables, data types, control flow", "Functions, error handling, modules", "Lab: Build your first AI script in Colab"] },
+      { "week": 3, "title": "NumPy for AI", "topics": ["Arrays, broadcasting, vectorization", "Math operations for ML", "Lab: Image processing basics"] },
+      { "week": 4, "title": "Pandas & Data Wrangling", "topics": ["DataFrames, CSV/JSON I/O", "Grouping, merging, cleaning", "Lab: Analyze Indian startup data"] },
+      { "week": 6, "title": "AI Production Pipeline", "topics": ["Integrate NumPy + Pandas", "Basic deployment with Streamlit", "Capstone: End-to-end AI project"] }
+    ],
+    "testimonials": [
+      { "name": "Priya S.", "text": "I started with zero coding and now I can build AI projects!", "rating": 5, "image": "https://nanoschool.in/images/testimonial-priya.webp" }
+    ],
+    "mentors": [
+      { "name": "Dr. A. Sharma", "title": "Lead Mentor", "image": "https://nanoschool.in/images/mentor-sharma.webp", "bio": "AI Educator, 10+ years experience" }
+    ],
+    "faqs": [
+      { "question": "Is this course suitable for absolute beginners?", "answer": "Yes! 70% of our learners start with zero coding experience." }
+    ],
+    "pricing": {
+      "weeks": 6,
+      "lms": { "usd": 114, "inr": 8994 },
+      "lms_video": { "usd": 174, "inr": 14994 },
+      "lms_video_live": { "usd": 534, "inr": 44994 }
+    },
+    "plans": [
+      { "name": "LMS Self-Paced", "price": 2499, "currency": "INR", "features": ["Lifetime access", "Interactive labs", "NSTC certificate"], "ctaUrl": "https://nanoschool.in/ai-course/registration/?pid=AI-1&plan=self", "highlight": false },
+      { "name": "Video + LMS", "price": 8499, "currency": "INR", "features": ["30+ HD videos", "Mentor Q&A", "All LMS features"], "ctaUrl": "https://nanoschool.in/ai-course/registration/?pid=AI-1&plan=video", "highlight": true },
+      { "name": "Live + Full Access", "price": 24999, "currency": "INR", "features": ["Weekly live classes", "1:1 mentorship", "Personal code reviews"], "ctaUrl": "https://nanoschool.in/ai-course/registration/?pid=AI-1&plan=live", "highlight": false }
+    ],
+    "offers": [
+      { "price": 3499, "currency": "INR", "url": "https://nanoschool.in/ai-course/registration/?pid=AI-1&plan=self", "planType": "self" },
+      { "price": 9999, "currency": "INR", "url": "https://nanoschool.in/ai-course/registration/?pid=AI-1&plan=video", "planType": "video" },
+      { "price": 29999, "currency": "INR", "url": "https://nanoschool.in/ai-course/registration/?pid=AI-1&plan=live", "planType": "live" }
+    ],
+    "aggregateRating": { "value": 3.6, "count": 13542 },
+    "organization": {
+      "name": "NanoSchool – Deep Science Learning Organisation",
+      "url": "https://nanoschool.in/",
+      "logo": "https://nanoschool.in/wp-content/uploads/2023/09/NSTC-Logo-2-removebg-preview-1.png",
+      "address": {
+        "streetAddress": "Delhi NCR",
+        "addressLocality": "New Delhi",
+        "addressRegion": "Delhi",
+        "postalCode": "110001",
+        "addressCountry": "IN"
+      },
+      "contact": {
+        "telephone": "+91-9958161117",
+        "contactType": "Customer Support",
+        "email": "info@nstc.in",
+        "areaServed": "IN"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/104240988/",
+        "https://x.com/ITBreakCom",
+        "https://www.instagram.com/nstcai_2006/"
+      ]
+    },
+    "structuredData": {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Python for AI",
+      "alternateName": "F208: Python for AI Foundations",
+      "description": "6-week beginner course on Python, NumPy, Pandas, and full-stack AI development. Accredited by NanoSchool Technology Council (NSTC). Ideal for Indian students in Delhi NCR.",
+      "courseCode": "F208",
+      "duration": "P6W",
+      "provider": {
+        "@type": "EducationalOrganization",
+        "name": "NanoSchool – Deep Science Learning Organisation",
+        "url": "https://nanoschool.in/",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "New Delhi",
+          "addressCountry": "IN"
+        }
+      },
+      "url": "https://nanoschool.in/ai/courses/python-for-ai/",
+      "educationalCredentialAwarded": "NSTC-Accredited Certificate in Python for AI",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "3.6",
+        "reviewCount": "13542"
+      },
+      "offers": [
+        { "price": "3499", "priceCurrency": "INR", "url": "https://nanoschool.in/ai-course/registration/?pid=AI-1&plan=self" },
+        { "price": "9999", "priceCurrency": "INR", "url": "https://nanoschool.in/ai-course/registration/?pid=AI-1&plan=video" },
+        { "price": "29999", "priceCurrency": "INR", "url": "https://nanoschool.in/ai-course/registration/?pid=AI-1&plan=live" }
+      ],
+      "audience": { "@type": "Audience", "audienceType": ["Beginner", "Student", "Career Switcher", "Delhi NCR Learner"] },
+      "teaches": ["Python Programming", "NumPy for AI", "Pandas Data Analysis", "AI Production Pipelines"],
+      "inLanguage": "en",
+      "isAccessibleForFree": false
+    },
+    "geo": {
+      "region": "Delhi NCR",
+      "country": "IN",
+      "city": "New Delhi",
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "meta": {
+      "title": "Learn Python for AI Online: 6-Week Beginner Bootcamp | NanoSchool (NSTC)",
+      "description": "6-week beginner course on Python, NumPy, Pandas, and full-stack AI development. Accredited by NanoSchool Technology Council (NSTC). Ideal for Indian students in Delhi NCR.",
+      "keywords": "python for ai, ai course, python bootcamp, nanoschool, nstc, delhi ncr, online ai course, pandas, numpy, ai programming",
+      "og": {
+        "title": "Learn Python for AI Online: 6-Week Beginner Bootcamp | NanoSchool (NSTC)",
+        "description": "Master Python, NumPy, and Pandas in 6 weeks. Build real AI pipelines. No prior coding needed.",
+        "image": "https://nanoschool.in/images/python-for-ai-banner.webp",
+        "url": "https://nanoschool.in/ai/courses/python-for-ai/"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Learn Python for AI Online: 6-Week Beginner Bootcamp | NanoSchool (NSTC)",
+        "description": "Master Python, NumPy, and Pandas in 6 weeks. Build real AI pipelines. No prior coding needed.",
+        "image": "https://nanoschool.in/images/python-for-ai-banner.webp"
+      },
+      "canonical": "https://nanoschool.in/ai/courses/python-for-ai/"
+    }
+  }
+]
